@@ -91,7 +91,7 @@ def output_image_blur
 
 
 def m_blur(a)
-
+puts "Blur of #{a}"
  
 
 		@input.each_with_index do |row, row_i|
@@ -102,10 +102,53 @@ def m_blur(a)
 
 					@input_copy[row_i][collum_i]=1
 					
+					#goes down 
 					a.times do |counter|
 						c = counter 
-						@input_copy[row_i + (counter)][collum_i]=1
+						d = row_i + c + 1
+						if d < (@r-1)
+						@input_copy[d][collum_i]=1 
+						end
 					end 
+
+					#goes up
+					a.times do |counter2|
+						c = counter2 
+						u = row_i - c - 1
+						if u >= 0 
+						@input_copy[u][collum_i]=1
+						end
+					end 
+
+
+					#goes right
+					a.times do |counter3|
+						c = counter3
+						r = collum_i + c + 1 
+						if r < (@c-1)
+							@input_copy[row_i][r]=1
+
+							#already to the right. Need to go up c times
+							# c is the amount over
+
+
+
+
+						end 
+					end 
+
+					#goes left 
+					a.times do |counter4|
+						c = counter4
+						l = collum_i - c - 1
+						if l >= 0 
+							@input_copy[row_i][l]=1
+						end
+					end 
+
+
+
+
 
 					
 				end 
@@ -120,7 +163,6 @@ end
 
 
 image = Image.new([
-  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,1],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
@@ -136,9 +178,10 @@ image = Image.new([
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
-  [0, 0, 0, 1,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
-  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0]
+  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
+  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
+  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,1]
 ])
 
 image.output_image
@@ -146,7 +189,7 @@ image.output_image
 #image.output_image_blur
 ##image.output_image
 #puts "Begin"
-image.m_blur(6)
+image.m_blur(5)
 
 image.output_image_blur
 
