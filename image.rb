@@ -102,30 +102,12 @@ def m_blur(a)
 
 					@input_copy[row_i][collum_i]=1
 					
-
 					a.times do |counter|
-						
-						if (counter + row_i +1 ) > (@r-1) 
-						@input_copy[row_i+counter][collum_i]=1
-						end
-						
-
+						c = counter 
+						@input_copy[row_i + (counter)][collum_i]=1
 					end 
-
-
 
 					
-					if row_i != 0 
-					@input_copy[row_i-1][collum_i]=1
-					end 
-					#covers
-					if collum_i != @c-1 
-					@input_copy[row_i][collum_i+1]=1
-					end 
-					#covers 
-					if collum_i != 0 
-					@input_copy[row_i][collum_i-1]=1
-					end
 				end 
 			end 
 		end 
@@ -138,7 +120,7 @@ end
 
 
 image = Image.new([
-  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
+  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,1],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
