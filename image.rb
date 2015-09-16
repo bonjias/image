@@ -8,10 +8,7 @@ class Image
 	 # find the amount of collums assuming all are equal to the first one  
 	@r = input.size 
 	# find amount of rows 
- 
 	@input_copy = Array.new(@r){|i| Array.new(@c) { |i| 0 }} 
-	
-	@coumter = 1 
 	end 
 
 	
@@ -19,32 +16,18 @@ class Image
 		@input.each do |input|
 		puts input.join('')
 		end 
-		
-
 	end 
 
 	
 	
 def output_image_blur
-		
-
 		@input_copy.each do |input|
 		puts input.join('')
-		
-		
 		end 
-
 	end 
 	
 
-
-
-
-
-
-
-
-	def blur
+def blur
 		@input.each_with_index do |row, row_i|
 			row.each_with_index do |cell, collum_i|
 					if cell == 1 
@@ -78,35 +61,27 @@ def output_image_blur
 
 def m_blur(a)
 puts "Blur of #{a}"
- 
-
 		@input.each_with_index do |row, row_i|
 			row.each_with_index do |cell, collum_i|
 				if cell == 1 
 						#finder
 					puts "row index #{row_i } has in index #{collum_i} a number 1, row size #{@r}, collum size #{@c}"
-
 					@input_copy[row_i][collum_i]=1
-					
 					#goes down 
 					a.times do |counter|
 						c = counter  + 1
 						d = row_i + c
-
 						if d < (@r)
 						@input_copy[d][collum_i]=1 
 						end
 						#still have moves to make 
 						if c != a 
 							moves = a - c 
-
 								moves.times do |count|
 									step = count + 1 
 									leftstep = collum_i - step
 									rightstep = collum_i + step 
-
-									
-
+										
 										if rightstep < (@c) 
 											begin 
 											@input_copy[d][rightstep]=1
@@ -121,12 +96,8 @@ puts "Blur of #{a}"
 											rescue
 											NoMethodError
 											end 
-										end 
-
-									
-
-
-
+									end 
+								
 								end 
 
 
@@ -149,9 +120,7 @@ puts "Blur of #{a}"
 									step = count + 1 
 									leftstep = collum_i - step
 									rightstep = collum_i + step 
-
-									
-
+							
 										if rightstep < (@c) 
 											begin 
 											@input_copy[u][rightstep]=1
@@ -169,19 +138,7 @@ puts "Blur of #{a}"
 										end 
 								end 
 						
-
-
-
 						end 
-							 
-
-
-
-
-
-
-
-
 						
 					end 
 
@@ -206,11 +163,7 @@ puts "Blur of #{a}"
 						end
 					end 
 
-
-
-
-
-					
+				
 				end 
 			end 
 		end 
@@ -234,7 +187,7 @@ image = Image.new([
   [0, 0, 0, 0,0,0,0,0,0,1, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
-  [0, 1, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
+  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
@@ -248,7 +201,7 @@ image.output_image
 #image.blur
 #image.output_image_blur
 
-image.m_blur(2)
+image.m_blur(5)
 
 image.output_image_blur
 
