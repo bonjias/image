@@ -3,13 +3,19 @@ class Image
 	
 	def initialize(input)
 	@input = input 
-	#define as instance variable 
 	@c = input.first.size
-	 # find the amount of collums assuming all are equal to the first one  
 	@r = input.size 
-	# find amount of rows 
 	@input_copy = Array.new(@r){|i| Array.new(@c) { |i| 0 }} 
 	end 
+
+	def collums
+	return @c 
+	end
+
+	def rows 
+		return @r 
+	end  
+
 
 	
 	def output_image
@@ -184,7 +190,7 @@ image = Image.new([
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
-  [0, 0, 0, 0,0,0,0,0,0,1, 0, 0,0,0,0,0,0,0],
+  [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,1,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
   [0, 0, 0, 0,0,0,0,0,0,0, 0, 0,0,0,0,0,0,0],
